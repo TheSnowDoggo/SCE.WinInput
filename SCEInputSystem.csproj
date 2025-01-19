@@ -1,20 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
 	  <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="lib\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Reference Include="SCE">
+      <HintPath>lib\SCE.dll</HintPath>
+    </Reference>
     <Reference Include="SCECore">
       <HintPath>lib\SCECore.dll</HintPath>
+    </Reference>
+    <Reference Include="SCEUIS">
+      <HintPath>lib\SCEUIS.dll</HintPath>
     </Reference>
   </ItemGroup>
 

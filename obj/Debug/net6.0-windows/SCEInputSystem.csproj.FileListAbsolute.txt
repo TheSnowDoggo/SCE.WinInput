@@ -1,0 +1,14 @@
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCEInputSystem.deps.json
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCEInputSystem.dll
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCEInputSystem.pdb
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCECore.dll
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.csproj.AssemblyReference.cache
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.AssemblyInfoInputs.cache
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.AssemblyInfo.cs
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.csproj.CoreCompileInputs.cache
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.csproj.CopyComplete
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.dll
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\refint\SCEInputSystem.dll
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.pdb
+C:\Users\redst\source\repos\SCEInputSystem\obj\Debug\net6.0-windows\ref\SCEInputSystem.dll
