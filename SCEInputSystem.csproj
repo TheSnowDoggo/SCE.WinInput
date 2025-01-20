@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>library</OutputType>
@@ -8,17 +8,5 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="SCE">
-      <HintPath>lib\SCE.dll</HintPath>
-    </Reference>
-    <Reference Include="SCECore">
-      <HintPath>lib\SCECore.dll</HintPath>
-    </Reference>
-    <Reference Include="SCEUIS">
-      <HintPath>lib\SCEUIS.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>
