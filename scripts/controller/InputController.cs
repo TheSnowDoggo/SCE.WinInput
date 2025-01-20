@@ -1,4 +1,6 @@
-﻿namespace SCEInputSystem
+﻿using SCE;
+
+namespace SCEInputSystem
 {
     public static class InputController
     {
@@ -10,9 +12,17 @@
 
         public static bool OnlyReceiveFocused { get; set; } = false;
 
-        public static Action<ConsoleKeyInfo>? OnKeyDown { get; set; }
+        public static Action<ConsoleKeyInfo>? OnKeyInfoDown { get; set; }
 
-        public static Action<ConsoleKeyInfo>? OnKeyUp { get; set; }
+        public static Action<ConsoleKeyInfo>? OnKeyInfoUp { get; set; }
+
+        public static Action<ConsoleKeyInfo, int>? OnKeyInfoModify { get; set; }
+
+        public static Action<Keys>? OnKeysDown { get; set; }
+
+        public static Action<Keys>? OnKeysUp { get; set; }
+
+        public static Action<Keys, int>? OnKeysModify { get; set; }
 
         /// <summary>
         /// Starts checking for inputs on a new thread.
@@ -33,14 +43,14 @@
             Application.Exit();
         }
 
-        /// <summary>
-        /// Determines whether the specified key is currently being pressed down.
-        /// </summary>
-        /// <param name="key">The key to check.</param>
-        /// <returns><see langword="true"/> if the <paramref name="key"/> is being pressed down; otherwise, <see langword="false"/>.</returns>
         public static bool IsKeyDown(Keys key)
         {
             return _pressedKeys.HasKey(key);
+        }
+
+        public static bool IsKeyDown(ConsoleKey consoleKey)
+        {
+            return IsKeyDown((Keys)consoleKey);
         }
 
         public static KeyGroup GetPressedKeys()
@@ -53,11 +63,27 @@
             return (Control.ModifierKeys & modifierKey) == modifierKey;
         }
 
+        public static bool IsShiftPressed() => IsModifierKeyDown(Keys.Shift);
+
+        public static bool IsAltPressed() => IsModifierKeyDown(Keys.Alt);
+
+        public static bool IsControlPressed() => IsModifierKeyDown(Keys.Control);
+
         public static void ModifierKeyStatus(out bool shift, out bool alt, out bool control)
         {
-            shift = IsModifierKeyDown(Keys.Shift);
-            alt = IsModifierKeyDown(Keys.Alt);
-            control = IsModifierKeyDown(Keys.Control);
+            shift = IsShiftPressed();
+            alt = IsAltPressed();
+            control = IsControlPressed();
+        }
+
+        public static void Link(InputHandler inputHandler)
+        {
+            OnKeyInfoDown += inputHandler.QueueKey;
+        }
+
+        public static void Delink(InputHandler inputHandler)
+        {
+            OnKeyInfoDown -= inputHandler.QueueKey;
         }
 
         private static void Run()
@@ -84,13 +110,18 @@
             if (keyState == 1)
             {
                 _pressedKeys.Add(keys);
-                OnKeyDown?.Invoke(keyInfo);
+                OnKeyInfoDown?.Invoke(keyInfo);
+                OnKeysDown?.Invoke(keys);
             }
             else
             {
                 _pressedKeys.Remove(keys);
-                OnKeyUp?.Invoke(keyInfo);
+                OnKeyInfoUp?.Invoke(keyInfo);
+                OnKeysUp?.Invoke(keys);
             }
+
+            OnKeyInfoModify?.Invoke(keyInfo, keyState);
+            OnKeysModify?.Invoke(keys, keyState);
         }
     }
 }

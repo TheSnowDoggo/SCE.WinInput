@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AdamG\\source\\repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj": {}
+    "C:\\Users\\AdamG\\Source\\Repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AdamG\\source\\repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj": {
+    "C:\\Users\\AdamG\\Source\\Repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AdamG\\source\\repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj",
+        "projectUniqueName": "C:\\Users\\AdamG\\Source\\Repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj",
         "projectName": "SCEInputSystem",
-        "projectPath": "C:\\Users\\AdamG\\source\\repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj",
+        "projectPath": "C:\\Users\\AdamG\\Source\\Repos\\TheSnowDoggo\\SCEInputSystem\\SCEInputSystem.csproj",
         "packagesPath": "C:\\Users\\AdamG\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AdamG\\source\\repos\\TheSnowDoggo\\SCEInputSystem\\obj\\",
+        "outputPath": "C:\\Users\\AdamG\\Source\\Repos\\TheSnowDoggo\\SCEInputSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

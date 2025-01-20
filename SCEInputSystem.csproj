@@ -3,10 +3,19 @@
   <PropertyGroup>
     <OutputType>library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-	  <UseWindowsForms>true</UseWindowsForms>
+	<UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="SCE">
+      <HintPath>lib\SCE.dll</HintPath>
+    </Reference>
+    <Reference Include="SCEUIS">
+      <HintPath>lib\SCEUIS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
