@@ -13,6 +13,9 @@
     <Reference Include="SCE">
       <HintPath>lib\SCE.dll</HintPath>
     </Reference>
+    <Reference Include="SCECore">
+      <HintPath>lib\SCECore.dll</HintPath>
+    </Reference>
     <Reference Include="SCEUIS">
       <HintPath>lib\SCEUIS.dll</HintPath>
     </Reference>

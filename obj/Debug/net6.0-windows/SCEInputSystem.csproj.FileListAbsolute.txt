@@ -27,3 +27,5 @@ C:\Users\AdamG\source\repos\TheSnowDoggo\SCEInputSystem\bin\Debug\net6.0-windows
 C:\Users\AdamG\source\repos\TheSnowDoggo\SCEInputSystem\bin\Debug\net6.0-windows\SCEUIS.dll
 C:\Users\AdamG\source\repos\TheSnowDoggo\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.csproj.AssemblyReference.cache
 C:\Users\AdamG\source\repos\TheSnowDoggo\SCEInputSystem\obj\Debug\net6.0-windows\SCEInputSystem.csproj.CopyComplete
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCE.dll
+C:\Users\redst\source\repos\SCEInputSystem\bin\Debug\net6.0-windows\SCEUIS.dll

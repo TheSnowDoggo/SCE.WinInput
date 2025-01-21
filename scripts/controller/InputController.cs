@@ -8,10 +8,11 @@ namespace SCEInputSystem
 
         private static readonly Thread _thread = new(Run);
 
-        private static readonly KeyGroup _pressedKeys = new();
+        private static readonly KeyMap _keysMap = new();
 
         public static bool OnlyReceiveFocused { get; set; } = false;
 
+        #region OnKey
         public static Action<ConsoleKeyInfo>? OnKeyInfoDown { get; set; }
 
         public static Action<ConsoleKeyInfo>? OnKeyInfoUp { get; set; }
@@ -23,29 +24,24 @@ namespace SCEInputSystem
         public static Action<Keys>? OnKeysUp { get; set; }
 
         public static Action<Keys, int>? OnKeysModify { get; set; }
+        #endregion
 
-        /// <summary>
-        /// Starts checking for inputs on a new thread.
-        /// </summary>
         public static void Start()
         {
             if (!_thread.IsAlive)
                 _thread.Start();
         }
 
-        /// <summary>
-        /// Stops checking for inputs.
-        /// </summary>
         public static void Stop()
         {
             _lowLevelKeyboardHook.Unhook();
-
             Application.Exit();
         }
 
-        public static bool IsKeyDown(Keys key)
+        #region KeyStatus
+        public static bool IsKeyDown(Keys keys)
         {
-            return _pressedKeys.HasKey(key);
+            return _keysMap.IsKeyDown(keys);
         }
 
         public static bool IsKeyDown(ConsoleKey consoleKey)
@@ -53,21 +49,25 @@ namespace SCEInputSystem
             return IsKeyDown((Keys)consoleKey);
         }
 
-        public static KeyGroup GetPressedKeys()
-        {
-            return _pressedKeys;
-        }
-
         public static bool IsModifierKeyDown(Keys modifierKey)
         {
             return (Control.ModifierKeys & modifierKey) == modifierKey;
         }
 
-        public static bool IsShiftPressed() => IsModifierKeyDown(Keys.Shift);
+        public static bool IsShiftPressed()
+        {
+            return IsModifierKeyDown(Keys.Shift);
+        }
 
-        public static bool IsAltPressed() => IsModifierKeyDown(Keys.Alt);
+        public static bool IsAltPressed()
+        {
+            return IsModifierKeyDown(Keys.Alt);
+        }
 
-        public static bool IsControlPressed() => IsModifierKeyDown(Keys.Control);
+        public static bool IsControlPressed()
+        {
+            return IsModifierKeyDown(Keys.Control);
+        }
 
         public static void ModifierKeyStatus(out bool shift, out bool alt, out bool control)
         {
@@ -75,7 +75,9 @@ namespace SCEInputSystem
             alt = IsAltPressed();
             control = IsControlPressed();
         }
+        #endregion
 
+        #region Link
         public static void Link(InputHandler inputHandler)
         {
             OnKeyInfoDown += inputHandler.QueueKey;
@@ -85,6 +87,19 @@ namespace SCEInputSystem
         {
             OnKeyInfoDown -= inputHandler.QueueKey;
         }
+        #endregion
+
+        #region KIMR
+        public static void LoadKIMR(IKeyInfoModifyReceiver kimr)
+        {
+            OnKeyInfoModify += kimr.KeyInfoModify;
+        }
+
+        public static void UnloadKIMR(IKeyInfoModifyReceiver kimr)
+        {
+            OnKeyInfoModify += kimr.KeyInfoModify;
+        }
+        #endregion
 
         private static void Run()
         {
@@ -101,27 +116,29 @@ namespace SCEInputSystem
                 return;
 
             uint vkCode = e.KBDLLHOOKSTRUCT.VkCode;
-
             Keys keys = (Keys)vkCode;
             ConsoleKeyInfo keyInfo = KeyConversion.KeyToConsoleKeyInfo(vkCode);
 
             int keyState = e.MessageType is LowLevelKeyboardHook.MessageType.KeyDown or LowLevelKeyboardHook.MessageType.SysKeyDown ? 1 : 0;
 
+            if ((keyState == 1 && !IsKeyDown(keys)) || (keyState == 0 && IsKeyDown(keys)))
+            {
+                _keysMap[keys] = keyState == 1;
+
+                OnKeyInfoModify?.Invoke(keyInfo, keyState);
+                OnKeysModify?.Invoke(keys, keyState);
+            }
+
             if (keyState == 1)
             {
-                _pressedKeys.Add(keys);
                 OnKeyInfoDown?.Invoke(keyInfo);
                 OnKeysDown?.Invoke(keys);
             }
             else
             {
-                _pressedKeys.Remove(keys);
                 OnKeyInfoUp?.Invoke(keyInfo);
                 OnKeysUp?.Invoke(keys);
             }
-
-            OnKeyInfoModify?.Invoke(keyInfo, keyState);
-            OnKeysModify?.Invoke(keys, keyState);
         }
     }
 }
