@@ -1,4 +1,4 @@
-﻿using SCEInputSystem;
+﻿using SCE.WinInput;
 
 namespace SCE
 {

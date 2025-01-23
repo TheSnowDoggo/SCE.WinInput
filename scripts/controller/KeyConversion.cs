@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SCEInputSystem
+namespace SCE.WinInput
 {
     internal class KeyConversion
     {

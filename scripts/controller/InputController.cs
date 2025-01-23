@@ -1,6 +1,4 @@
-﻿using SCE;
-
-namespace SCEInputSystem
+﻿namespace SCE.WinInput
 {
     public static class InputController
     {

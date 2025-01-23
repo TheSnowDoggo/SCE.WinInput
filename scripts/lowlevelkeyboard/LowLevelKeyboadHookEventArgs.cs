@@ -1,4 +1,4 @@
-﻿namespace SCEInputSystem
+﻿namespace SCE.WinInput
 {
     internal class LowLevelKeyboardHookEventArgs : EventArgs
     {

@@ -1,4 +1,4 @@
-﻿namespace SCEInputSystem
+﻿namespace SCE.WinInput
 {
     using System.Runtime.InteropServices;
 

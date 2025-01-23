@@ -10,14 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SCE">
-      <HintPath>lib\SCE.dll</HintPath>
+    <Reference Include="SCE.Core">
+      <HintPath>lib\SCE.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SCECore">
-      <HintPath>lib\SCECore.dll</HintPath>
-    </Reference>
-    <Reference Include="SCEUIS">
-      <HintPath>lib\SCEUIS.dll</HintPath>
+    <Reference Include="SCE.UnifiedInputSystem">
+      <HintPath>lib\SCE.UnifiedInputSystem.dll</HintPath>
     </Reference>
   </ItemGroup>
 

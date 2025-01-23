@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\redst\\source\\repos\\SCEInputSystem\\SCEInputSystem.csproj",
-      "projectName": "SCEInputSystem",
-      "projectPath": "C:\\Users\\redst\\source\\repos\\SCEInputSystem\\SCEInputSystem.csproj",
+      "projectUniqueName": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\SCE.WinInput.csproj",
+      "projectName": "SCE.WinInput",
+      "projectPath": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\SCE.WinInput.csproj",
       "packagesPath": "C:\\Users\\redst\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\redst\\source\\repos\\SCEInputSystem\\obj\\",
+      "outputPath": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

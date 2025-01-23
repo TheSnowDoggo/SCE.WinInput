@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SCEInputSystem
+namespace SCE.WinInput
 {
     internal class WindowUtils
     {
