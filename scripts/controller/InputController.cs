@@ -11,17 +11,7 @@
         public static bool OnlyReceiveFocused { get; set; } = false;
 
         #region OnKey
-        public static Action<ConsoleKeyInfo>? OnKeyInfoDown { get; set; }
-
-        public static Action<ConsoleKeyInfo>? OnKeyInfoUp { get; set; }
-
-        public static Action<ConsoleKeyInfo, int>? OnKeyInfoModify { get; set; }
-
-        public static Action<Keys>? OnKeysDown { get; set; }
-
-        public static Action<Keys>? OnKeysUp { get; set; }
-
-        public static Action<Keys, int>? OnKeysModify { get; set; }
+        public static Action<UISKeyInfo>? OnKeyEvent { get; set; }
         #endregion
 
         public static void Start()
@@ -78,24 +68,12 @@
         #region Link
         public static void Link(InputHandler inputHandler)
         {
-            OnKeyInfoDown += inputHandler.QueueKey;
+            OnKeyEvent += inputHandler.QueueKey;
         }
 
         public static void Delink(InputHandler inputHandler)
         {
-            OnKeyInfoDown -= inputHandler.QueueKey;
-        }
-        #endregion
-
-        #region KIMR
-        public static void LoadKIMR(IKeyInfoModifyReceiver kimr)
-        {
-            OnKeyInfoModify += kimr.KeyInfoModify;
-        }
-
-        public static void UnloadKIMR(IKeyInfoModifyReceiver kimr)
-        {
-            OnKeyInfoModify += kimr.KeyInfoModify;
+            OnKeyEvent -= inputHandler.QueueKey;
         }
         #endregion
 
@@ -123,20 +101,11 @@
             {
                 _keysMap[keys] = keyState == 1;
 
-                OnKeyInfoModify?.Invoke(keyInfo, keyState);
-                OnKeysModify?.Invoke(keys, keyState);
+                OnKeyEvent?.Invoke(new UISKeyInfo(keyInfo, (InputType)keyState));
             }
 
             if (keyState == 1)
-            {
-                OnKeyInfoDown?.Invoke(keyInfo);
-                OnKeysDown?.Invoke(keys);
-            }
-            else
-            {
-                OnKeyInfoUp?.Invoke(keyInfo);
-                OnKeysUp?.Invoke(keys);
-            }
+                OnKeyEvent?.Invoke(new UISKeyInfo(keyInfo, InputType.InputStream));
         }
     }
 }

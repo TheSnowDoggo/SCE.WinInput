@@ -2,27 +2,23 @@
 
 namespace SCE
 {
-    public class InputMoveVector : IKeyInfoModifyReceiver
+    public class InputMoveVector : InputBase
     {
         private readonly InputVector _verticalVector;
 
         private readonly InputVector _horizontalVector;
 
-        public InputMoveVector(ConsoleKey upKey, ConsoleKey downKey, ConsoleKey rightKey, ConsoleKey leftKey, bool autoLoad = false)
+        public InputMoveVector(ConsoleKey upKey, ConsoleKey downKey, ConsoleKey rightKey, ConsoleKey leftKey)
         {
             _verticalVector = new(upKey, downKey) { OnModify = OnModify };
             _horizontalVector = new(rightKey, leftKey) { OnModify = OnModify };
-            if (autoLoad)
-                InputController.LoadKIMR(this);
         }
 
         #region Presets
-        public static InputMoveVector PresetWASD(bool autoLoad = false) => new(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A, autoLoad);
+        public static InputMoveVector PresetWASD() => new(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
 
-        public static InputMoveVector PresetUpDownLeftRight(bool autoLoad = false) => new(ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow, autoLoad);
+        public static InputMoveVector PresetUpDownLeftRight() => new(ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
         #endregion
-
-        public bool IsActive { get; set; } = true;
 
         #region Keys
         public ConsoleKey UpKey
@@ -58,12 +54,12 @@ namespace SCE
 
        public Action<Vector2>? OnModifyNormalized { get; set; }
  
-        public void KeyInfoModify(ConsoleKeyInfo keyInfo, int keyState)
+        public override void LoadKeyInfo(UISKeyInfo uisKeyInfo)
         {
-            if (!IsActive)
+            if (uisKeyInfo.InputMode is InputType.InputStream)
                 return;
-            _verticalVector.KeyInfoModify(keyInfo, keyState);
-            _horizontalVector.KeyInfoModify(keyInfo, keyState);
+            _verticalVector.LoadKeyInfo(uisKeyInfo);
+            _horizontalVector.LoadKeyInfo(uisKeyInfo);
         }
 
         private void OnModify(int _)

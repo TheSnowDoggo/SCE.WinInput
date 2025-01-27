@@ -2,17 +2,13 @@
 
 namespace SCE
 {
-    public class InputVector : IKeyInfoModifyReceiver
+    public class InputVector : InputBase
     {
-        public InputVector(ConsoleKey positiveKey, ConsoleKey negativeKey, bool autoload = false)
+        public InputVector(ConsoleKey positiveKey, ConsoleKey negativeKey)
         {
             PositiveKey = positiveKey;
             NegativeKey = negativeKey;
-            if (autoload)
-                InputController.LoadKIMR(this);
         }
-
-        public bool IsActive { get; set; } = true;
 
         public ConsoleKey PositiveKey { get; set; }
 
@@ -23,20 +19,20 @@ namespace SCE
         public Action<int>? OnModify { get; set; }
 
         #region Presets
-        public static InputVector PresetWS(bool autoLoad = false) => new(ConsoleKey.W, ConsoleKey.S, autoLoad);
+        public static InputVector PresetWS() => new(ConsoleKey.W, ConsoleKey.S);
 
-        public static InputVector PresetDA(bool autoLoad = false) => new(ConsoleKey.D, ConsoleKey.A, autoLoad);
+        public static InputVector PresetDA() => new(ConsoleKey.D, ConsoleKey.A);
 
-        public static InputVector PresetUpDown(bool autoLoad = false) => new(ConsoleKey.UpArrow, ConsoleKey.DownArrow, autoLoad);
+        public static InputVector PresetUpDown() => new(ConsoleKey.UpArrow, ConsoleKey.DownArrow);
 
-        public static InputVector PresetRightLeft(bool autoLoad = false) => new(ConsoleKey.RightArrow, ConsoleKey.LeftArrow, autoLoad);
+        public static InputVector PresetRightLeft() => new(ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
         #endregion
 
-        public void KeyInfoModify(ConsoleKeyInfo keyInfo, int keyState)
+        public override void LoadKeyInfo(UISKeyInfo uisKeyInfo)
         {
-            if (!IsActive)
+            if (uisKeyInfo.InputMode is InputType.InputStream)
                 return;
-            var key = keyInfo.Key;
+            var key = uisKeyInfo.KeyInfo.Key;
             if (key == PositiveKey || key == NegativeKey)
             {
                 Vector = 0;
