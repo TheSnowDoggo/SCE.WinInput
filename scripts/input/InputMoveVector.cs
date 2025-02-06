@@ -66,7 +66,7 @@ namespace SCE
         {
             RawMoveVector = new(_horizontalVector.Vector, _verticalVector.Vector);
             var vec2 = RawMoveVector.ToVector2();
-            NormalizedMoveVector = vec2.Magnitude != 0 ? vec2.Normalize() : Vector2.Zero;
+            NormalizedMoveVector = vec2.Magnitude() != 0 ? vec2.Normalize() : Vector2.Zero;
 
             OnModifyRaw?.Invoke(RawMoveVector);
             OnModifyNormalized?.Invoke(NormalizedMoveVector);

@@ -13,9 +13,6 @@
     <Reference Include="SCE.Core">
       <HintPath>lib\SCE.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SCE.UnifiedInputSystem">
-      <HintPath>lib\SCE.UnifiedInputSystem.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
