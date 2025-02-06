@@ -1,11 +1,43 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "SCECore/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SCE.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SCE.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SCECore/2.1.0": {
+      "sha512": "QHc6KQQbWPdmmPFG2Gl2MZPxVu9Quo1h3vd915xq0mk8601mZ/EHRij67qnU7GRNOD2U4WwZa1R1yiFLwBqDRw==",
+      "type": "package",
+      "path": "scecore/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net6.0/SCE.Core.dll",
+        "lib/net6.0/SCE.Core.xml",
+        "scecore.2.1.0.nupkg.sha512",
+        "scecore.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "SCECore >= 2.1.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\redst\\.nuget\\packages\\": {},
@@ -15,7 +47,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\SCE.WinInput.csproj",
-      "projectName": "SCE.WinInput",
+      "projectName": "SCEWinInput",
       "projectPath": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\SCE.WinInput.csproj",
       "packagesPath": "C:\\Users\\redst\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\obj\\",
@@ -24,6 +56,7 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+        "C:\\Users\\redst\\source\\repos\\TheSnowDoggo\\SCE.WinInput\\NuGet.Config",
         "C:\\Users\\redst\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -32,9 +65,8 @@
         "net6.0-windows"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://nuget.pkg.github.com/TheSnowDoggo/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
@@ -51,6 +83,12 @@
     "frameworks": {
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "SCECore": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

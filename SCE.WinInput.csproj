@@ -3,16 +3,37 @@
   <PropertyGroup>
     <OutputType>library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
+	<Authors>Adam Giaziri</Authors>
 	<UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x86</Platforms>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Title>$(AssemblyName)</Title>
+    <PackageId>SCEWinInput</PackageId>
+    <Copyright>MIT License</Copyright>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Windows Input system and Controller with support for multi-key inputs for SCE.</Description>
+    <RepositoryUrl>https://github.com/TheSnowDoggo/SCE.WinInput</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SCE.Core">
-      <HintPath>lib\SCE.Core.dll</HintPath>
-    </Reference>
+    <PackageReference Include="SCECore" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
